@@ -1,0 +1,164 @@
+/* Import Custom Font */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  /* Option A: Elegant gradient background (if no image) */
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
+
+  /* Option B: Background Image (Uncomment if you add an image) */
+  /* background-image: url("./images/bg.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed;
+  */
+
+  min-height: 100vh;
+}
+
+/* Centered Spinner */
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full viewport height */
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-header {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* Main Container */
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  padding: 30px;
+  border-radius: 10px;
+  /* Softer borders */
+  background-color: white;
+  /* Changed ugly gray #ccc to clean white */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  /* Elegant shadow */
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+  transition: transform 0.1s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Individual Tasks */
+.task {
+  background: #f8f9fa;
+  margin: 10px 0;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid steelblue;
+  /* Decorative border */
+  transition: all 0.3s ease;
+}
+
+.task:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.textBold {
+  font-weight: bold;
+}
+
+/* Icons */
+.delIcon {
+  color: #e74c3c;
+  /* Soft red */
+  cursor: pointer;
+}
+
+.editIcon {
+  color: #3498db;
+  /* Soft blue */
+  cursor: pointer;
+}
+
+/* Form */
+.add-form {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #333;
+}
+
+/* --- Responsiveness (Mobile) --- */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+    margin-top: 50px;
+  }
+}
