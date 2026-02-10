@@ -3,8 +3,8 @@ import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 const Task = ({ task, onDelete, onEdit }) => {
   return (
     <div className="task">
-      {/* Left Side: Text and Date */}
-      <div>
+      {/* Task Info Container */}
+      <div className="task-info">
         <p className="taskName">
           <span className="textBold">Task:</span> {task.text}
         </p>
@@ -13,17 +13,21 @@ const Task = ({ task, onDelete, onEdit }) => {
         </p>
       </div>
 
-      {/* Right Side: Edit and Delete Icons */}
+      {/* Action Buttons */}
       <div className="task-icons">
         <FaPencilAlt 
-            onClick={() => onEdit(task.id)} 
             className="editIcon" 
-            title="Edit"
+            role="button"          // 1. Tells screen reader "This is a button"
+            tabIndex={0}           // 2. Makes it focusable via Keyboard (Tab key)
+            aria-label="Edit task" // 3. Description for blind users
+            onClick={() => onEdit(task.id)} 
         />
         <FaTimes 
-            onClick={() => onDelete(task.id)} 
             className="delIcon" 
-            title="Delete"
+            role="button"
+            tabIndex={0}
+            aria-label="Delete task"
+            onClick={() => onDelete(task.id)} 
         />
       </div>
     </div>

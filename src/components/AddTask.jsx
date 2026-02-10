@@ -2,48 +2,54 @@ import { useState } from 'react';
 import Swal from "sweetalert2";
 
 const AddTask = ({ onSave }) => {
-    // 1. States: Form memory
     const [text, setText] = useState('');
     const [day, setDay] = useState('');
 
-    // 2. Function executed on form submit
     const onSubmit = (e) => {
-        e.preventDefault(); // Prevents page reload (Vital in React!)
+        e.preventDefault();
 
-        // Validations with SweetAlert
+        // Validation Logic: Early Return Pattern
         if (!text && !day) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'You must fill in the task and the date!'
-            })
-        } else if (!text && day) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'You forgot to write the task!'
-            })
-        } else if (text && !day) { // Fixed logic: Text exists, Day is missing
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'You forgot the date!'
-            })
-        } else {
-            // If everything is okay, send data to parent (App.jsx)
-            onSave({ text, day });
-            
-            // Clear form
-            setText('');
-            setDay('');
+                text: 'Please fill in both the task and the date!'
+            });
+            return;
         }
+
+        if (!text) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Missing Task',
+                text: 'Please add a task description!'
+            });
+            return;
+        }
+
+        if (!day) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Missing Date',
+                text: 'Please add a day & time!'
+            });
+            return;
+        }
+
+        // If validation passes, submit data
+        onSave({ text, day });
+
+        // Reset form fields
+        setText('');
+        setDay('');
     }
 
     return (
         <form className="add-form" onSubmit={onSubmit}>
             <div className="form-control">
-                <label>Task</label>
+                <label htmlFor="task-input">Task</label>
                 <input 
+                    id="task-input"
                     type="text" 
                     placeholder="Ex: Buy groceries" 
                     value={text} 
@@ -51,8 +57,9 @@ const AddTask = ({ onSave }) => {
                 />
             </div>
             <div className="form-control">
-                <label>Day & Time</label>
+                <label htmlFor="day-input">Day & Time</label>
                 <input 
+                    id="day-input"
                     type="text" 
                     placeholder="Ex: Feb 5th at 2:30pm" 
                     value={day} 

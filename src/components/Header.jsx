@@ -13,7 +13,7 @@ const Header = ({ showForm, changeTextAndColor }) => {
   )
 }
 
-// "defaultProps" sets default values if props are missing
+
 Header.defaultProps = {
   title: 'Task Manager App',
 }
